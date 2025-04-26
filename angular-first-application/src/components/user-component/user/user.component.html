@@ -1,10 +1,16 @@
 <div [@slideIn]>
-<div class="custom-button-wrapper">
-  <button class="custom-button">
+<div class="custom-button-wrapper" *ngFor="let users of userList">
+  <button class="custom-button" 
+  (mouseenter)="playAudio()"
+  (click)="onSelectedUser(users.id)"
+  >
     <div class="button-content">
-      <img class="user-image" src="./assets/channel-1.jpeg">
-      <p class="user-name">John Doe</p>
+      <img class="user-image" [src]="imagePath+users.avatar" 
+      [alt]="users.name">
+      <p class="user-name">{{users.name}}</p>
     </div>
   </button>
 </div>
 </div>
+
+

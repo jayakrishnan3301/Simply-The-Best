@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import {trigger,style,animate,transition,} from '@angular/animations';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserList } from '../../../Models/UsersList';
+import { trigger, style, animate, transition, } from '@angular/animations';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
   animations: [
@@ -14,6 +17,24 @@ import {trigger,style,animate,transition,} from '@angular/animations';
     ])
   ]
 })
-export class UserComponent {
+export class UserComponent  {
+
+  userList = UserList;
+  @Output() selectedUserId = new EventEmitter<string>()
+
+  get imagePath() {
+    return './assets/users/'
+  }
+
+  onSelectedUser(userId: string) {
+    this.selectedUserId.emit(userId)
+  }
+
+  playAudio() {
+    let audio = new Audio();
+    audio.src = "./assets/audio/bubble-pop.mp3";
+    audio.load();
+    audio.play();
+  }
 
 }
