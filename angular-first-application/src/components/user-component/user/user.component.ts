@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { UserList } from '../../../Models/UsersList';
 import { trigger, style, animate, transition, } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-
+import { SoundService } from '../../SoundService';
 @Component({
   selector: 'app-user',
   imports: [CommonModule],
@@ -19,6 +19,8 @@ import { CommonModule } from '@angular/common';
 })
 export class UserComponent  {
 
+  constructor(private soundService:SoundService) {}
+
   userList = UserList;
   @Output() selectedUserId = new EventEmitter<string>()
 
@@ -32,10 +34,7 @@ export class UserComponent  {
 
   playButtonPressed()
   {
-    let audio = new Audio();
-    audio.src = "./assets/audio/mouse-click.mp3";
-    audio.load();
-    audio.play();
+    this.soundService.playClickSound();
   }
 
 }
