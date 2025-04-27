@@ -1,7 +1,7 @@
 <div [@slideIn]>
 <div class="custom-button-wrapper" *ngFor="let users of userList">
   <button class="custom-button" 
-  (mouseenter)="playAudio()"
+  (click)="playButtonPressed()"
   (click)="onSelectedUser(users.id)"
   >
     <div class="button-content">

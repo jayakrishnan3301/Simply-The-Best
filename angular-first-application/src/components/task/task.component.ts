@@ -9,9 +9,7 @@ import { UserList } from '../../Models/UsersList';
 export class TaskComponent {
 
   userlist = UserList;
-
   @Input() userId: string | undefined
-
   username: string | undefined
 
   ngOnChanges(changes: SimpleChanges) {
